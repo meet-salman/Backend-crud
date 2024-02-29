@@ -14,7 +14,7 @@ const App = () => {
     getUsers()
   }, [])
 
-  
+  // Get User From Beckend API
   const getUsers = () => {
     axios.get('http://localhost:3000/api/v1/users')
       .then((res) => {
@@ -25,6 +25,7 @@ const App = () => {
       })
   }
 
+  // Add User From Beckend API
   const addUser = (event) => {
     event.preventDefault();
 
@@ -48,12 +49,14 @@ const App = () => {
     <>
       <h1> Welcome! </h1>
 
+      {/* User Add Form */}
       <form onSubmit={addUser}>
         <input type="text" ref={name} placeholder='Name' />
         <input type="email" ref={email} placeholder='Email' />
         <button type="submit"> Add User </button>
       </form>
 
+      {/* Users Rendering */}
       <div>
         {users.length > 0 ? users.map((user) => {
           return <div key={user.id}>
